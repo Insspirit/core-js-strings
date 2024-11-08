@@ -315,7 +315,14 @@ function containsSubstring(str, substring) {
  *   countVowels('XYZ') => 1
  */
 function countVowels(str) {
-  throw new Error('Not implemented');
+  const arr = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
+  let count = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    if (arr.includes(str[i])) {
+      count += 1;
+    }
+  }
+  return count;
 }
 
 /**
@@ -331,8 +338,11 @@ function countVowels(str) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let strNew = str.replace(/,|!|\?/g, '');
+  strNew = strNew.split(' ').join('').toLocaleLowerCase();
+  const strRev = strNew.split('').reverse().join('');
+  return strNew === strRev;
 }
 
 /**
@@ -347,8 +357,16 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const words = sentence.split(' '); // поделили строку
+  let longest = ''; // тут храним наши слова для сравнения
+  for (let i = 0; i < words.length; i += 1) {
+    const word = words[i]; // текущее слово
+    if (word.length > longest.length) {
+      longest = word;
+    }
+  }
+  return longest;
 }
 
 /**
@@ -361,8 +379,12 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  const words = str.split(' ');
+  const reverse = words.map((word) => {
+    return word.split('').reverse().join('');
+  });
+  return reverse.join(' ');
 }
 
 /**
